@@ -1,0 +1,5 @@
+command to make exe file
+
+cd to my_pygame folder
+
+c:\Python27\python.exe PyInstaller-2.1\pyinstaller.py fast_food_mouse.py
