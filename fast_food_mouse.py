@@ -1,4 +1,4 @@
-from random import randint
+import random
 from gifimage import *
 
 pygame.init()
@@ -51,7 +51,7 @@ class Item():
         self.totalframes = start_totalframes
         self.item_x = width
 
-        number = randint(1, 5)
+        number = random.randint(1, 5)
         if number == 1:
             self.icon = pygame.image.load("images/pitogyro.png")
             self.is_eatable = True
@@ -69,46 +69,46 @@ class Item():
             self.is_eatable = False
 
         self.width, self.height = self.icon.get_size()
-        self.item_y = randint(0, height - self.height)
+        self.item_y = random.randint(0, height - self.height)
         self.is_catched = False
-        self.how_fast = randint(5, 10)
+        self.how_fast = random.randint(5, 10)
 
     def random_item_motion_and_catching(self, screen, item_x, item_y, how_fast, murray_x, murray_y, item_width,
-                                        item_height, is_catched):
+                                        item_height, is_caught):
 
         item_x -= how_fast
 
         if item_x + item_width >= murray_x >= item_x and item_y + item_height >= murray_y >= item_y:
-            is_catched = True
+            is_caught = True
             item_x = -80
 
         elif item_x + item_width >= murray_x + murray_width >= item_x and item_y + item_height >= murray_y >= item_y:
-            is_catched = True
+            is_caught = True
             item_x = -80
 
         elif item_x + item_width >= murray_x >= item_x and item_y + item_height >= murray_y + murray_height >= item_y:
-            is_catched = True
+            is_caught = True
             item_x = -80
 
         elif item_x + item_width >= murray_x + murray_width >= item_x and item_y + item_height >= murray_y + murray_height >= item_y:
-            is_catched = True
+            is_caught = True
             item_x = -80
 
         elif item_y >= murray_y and item_y + item_height <= murray_y + murray_height and murray_x <= item_x <= murray_x + murray_width:
-            is_catched = True
+            is_caught = True
             item_x = -80
 
         elif item_x <= murray_x <= item_x + item_width and item_y >= murray_y and item_y + item_height <= murray_y + murray_height:
-            is_catched = True
+            is_caught = True
             item_x = -80
 
         else:
             screen.blit(self.icon, (item_x, item_y))
 
-        return item_x, item_y, is_catched
+        return item_x, item_y, is_caught
 
 
-def printscores(time, score, teeth):
+def print_scores(time, score, teeth):
     timetext = monospace.render("time:" + str(time), 1, (255, 255, 255))
     scoretext = monospace.render("score:" + str(score), 1, (255, 255, 255))
     teethtext = monospace.render("teeth: " + str(teeth), 1, (255, 255, 255))
@@ -130,7 +130,7 @@ def print_record(time, score):
 
 def play_bite_sound(is_eatable):
     if is_eatable:
-        bite_sounds_list[randint(0, len(bite_sounds_list) - 1)].play()
+        bite_sounds_list[random.randint(0, len(bite_sounds_list) - 1)].play()
     else:
         broken1.play()
 
@@ -186,7 +186,7 @@ def game():
             murray_y = 0
         murray.render(screen, (murray_x, murray_y))
 
-        freq = randint(20, 50)
+        freq = random.randint(20, 50)
         freq = freq / 2
 
         if totalframes % freq == 0:
@@ -215,7 +215,7 @@ def game():
                             score -= 3
 
         time = float(float(totalframes) / float(fps))
-        printscores(time, score, teeth)
+        print_scores(time, score, teeth)
 
         c = clock.tick(fps)
         pygame.display.update()
