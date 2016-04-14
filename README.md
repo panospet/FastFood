@@ -1,2 +1,2 @@
 # FastFood
-Small Fast Food game written in pygame
+Small Fast Food game written in Python/pygame
