@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import random
 from gifimage import *
 
@@ -31,7 +33,7 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
 # game caption
-pygame.display.set_caption('pitogyra')
+pygame.display.set_caption('FastFood: A game for hungry people!')
 
 # sounds
 bite1 = pygame.mixer.Sound('sounds/bite1.wav')
