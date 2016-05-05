@@ -289,5 +289,5 @@ def out_of_teeth(time):
     c = clock.tick(fps)
     totalframes += 1
 
-
-game()
+if __name__ == '__main__':
+    game()
