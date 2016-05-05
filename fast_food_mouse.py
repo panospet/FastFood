@@ -72,7 +72,7 @@ class Item():
 
         self.width, self.height = self.icon.get_size()
         self.item_y = random.randint(0, height - self.height)
-        self.is_catched = False
+        self.is_caught = False
         self.how_fast = random.randint(5, 10)
 
     def random_item_motion_and_catching(self, screen, item_x, item_y, how_fast, murray_x, murray_y, item_width,
@@ -142,18 +142,9 @@ def game():
 
     # clock stuff
     clock = pygame.time.Clock()
-    fps = 100
+    fps = 70
     totalframes = 0
     time = 0
-
-    # murray position initialization
-    murray_x = murray_width - 20
-    murray_y = height / 2
-    move_y = 0
-
-    # item coming
-    rect_side = 40
-    how_fast = 1
 
     # frequency of items coming
     # freq = 100
@@ -196,23 +187,23 @@ def game():
 
         for item in a:
             if totalframes > item.totalframes:
-                item.item_x, item.item_y, item.is_catched = item.random_item_motion_and_catching(screen, item.item_x,
-                                                                                                 item.item_y,
-                                                                                                 item.how_fast,
-                                                                                                 murray_x, murray_y,
-                                                                                                 item.width,
-                                                                                                 item.height,
-                                                                                                 item.is_catched)
+                item.item_x, item.item_y, item.is_caught = item.random_item_motion_and_catching(screen, item.item_x,
+                                                                                                item.item_y,
+                                                                                                item.how_fast,
+                                                                                                murray_x, murray_y,
+                                                                                                item.width,
+                                                                                                item.height,
+                                                                                                item.is_caught)
                 if item.item_x < -80:
                     a.remove(item)
-                    if item.is_catched:
+                    if item.is_caught:
                         play_bite_sound(item.is_eatable)
                         if item.is_eatable:
                             score += 1
                         else:
                             score -= 10
                             teeth -= 1
-                    elif not item.is_catched:
+                    elif not item.is_caught:
                         if item.is_eatable:
                             score -= 3
 
