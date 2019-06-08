@@ -1,9 +1,8 @@
 """GIFImage by Matthew Roe"""
 
-import Image
+from PIL import Image
 import pygame
 from pygame.locals import *
-
 import time
 
 class GIFImage(object):
@@ -84,7 +83,7 @@ class GIFImage(object):
                 else:
                     palette = base_palette
 
-                pi = pygame.image.fromstring(image.tostring(), image.size, image.mode)
+                pi = pygame.image.fromstring(image.tobytes(), image.size, image.mode)
                 pi.set_palette(palette)
                 if "transparency" in image.info:
                     pi.set_colorkey(image.info["transparency"])

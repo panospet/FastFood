@@ -18,7 +18,6 @@ width = 1300
 height = 700
 size2 = (width, height)
 screen = pygame.display.set_mode(size2)
-print width, height
 
 # my murray .gif pic
 murray = GIFImage("images/little_murray.gif")
